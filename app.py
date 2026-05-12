@@ -44,6 +44,17 @@ def dashboard():
         return render_template('dashboard.html', username = session['username'])
     return redirect(url_for('login'))
 
+# LOAD TO-DO TASKS PAGE
+@app.route('/tasks')
+def tasks():
+    return render_template("tasks.html")
+
+# LOGOUT ROUTING
+@app.route('/logout')
+def logout():
+    session.clear()
+    return redirect(url_for('login'))
+
 # SIGNUP ROUTING
 @app.route('/signup', methods = ['POST', 'GET'])
 def signup():
@@ -66,12 +77,6 @@ def signup():
             conn.close()
 
     return render_template('signup.html')
-
-# LOGOUT ROUTING
-@app.route('/logout')
-def logout():
-    session.clear()
-    return redirect(url_for('login'))
 
 # RUN APP
 if __name__ == '__main__':

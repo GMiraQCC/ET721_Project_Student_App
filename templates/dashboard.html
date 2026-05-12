@@ -1,5 +1,8 @@
 {% extends 'base.html' %}
 {% block content %}
     <h1>Welcome, {{username}}!</h1>
+    <a href="{{url_for('tasks')}}"><h2>Your "To-Do" Tasks</h2></a>
+    <h2>Student Blogs</h2>
+    <h2>Your "Note" Images</h2>
     <a href="{{url_for('login')}}">Log out</a>
 {% endblock %}
