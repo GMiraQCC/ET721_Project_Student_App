@@ -5,9 +5,10 @@ main{
     padding: 2.5rem;
     margin: 3.8rem;
 }
-footer{
+footer, header{
     background-color: #0a0a0a;
     color: #f0ffff;
     text-align: center;
     padding: 0.6rem;
 }
+header{ font-size: 1.8rem; padding: 0.8rem; }

@@ -44,10 +44,20 @@ def dashboard():
         return render_template('dashboard.html', username = session['username'])
     return redirect(url_for('login'))
 
-# LOAD TO-DO TASKS PAGE
+# LOAD TASKS PAGE
 @app.route('/tasks')
 def tasks():
-    return render_template("tasks.html")
+    return render_template("tasks.html", username = session['username'])
+
+# LOAD BLOGS PAGE
+@app.route('/blogs')
+def blogs():
+    return render_template("blogs.html")
+
+# LOAD IMAGES PAGE
+@app.route('/images')
+def images():
+    return render_template("images.html", username = session['username'])
 
 # LOGOUT ROUTING
 @app.route('/logout')
