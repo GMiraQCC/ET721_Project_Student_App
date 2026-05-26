@@ -3,42 +3,37 @@
     <head><style>main{ background-color: #cffdaa; }</style></head>
     <h1>{{username}}'s Tasks (To-Do List)</h1>
 
-    <button onclick="showAddForm('${title}', '${cat}', '${due}', '${remind}')">Show Add Task Form</button>
-    <section id="taskAddSection" style="display: none;">
-    <form method="post" class="login_form">
+    <section id="taskListSection">
+        <ul id="taskList"></ul>
+    </section>
+
+    <section id="addTaskSection" class="addForm">
         <section>
-            Title: <input type="email" name="task" id="addTaskTitle" placeholder="Describe the task..." required>
+            Task: <input type="text" name="task" id="addTaskTitle" placeholder="Describe the task..." required>
         </section>
-        
         <section>
             Category:
-            <select id="addTaskCategory">
-                <option>Academic</option>
-                <option>Personal</option>
+            <select name="category" id="addTaskCategory">
+                <option value="academic">Academic</option>
+                <option value="personal">Personal</option>
+                <option value="occupational">Occupational</option>
+                <option value="etc">Etc</option>
             </select>
         </section>
-
         <section>
-            Due Date: <input type="date" name="due" id="addTaskDue" required>
+            Due Date: <input type="datetime-local" name="due" id="addTaskDue">
         </section>
-
         <section>
-            Reminder: <input type="date" id="addTaskRemind" name="remind">
+            Reminder: <input type="datetime-local" name="remind" id="addTaskRemind">
         </section>
-
-        <button type="submit" id="addTask">Add Task</button>
-    </form>
+        <button type="submit" id="addTask" class="btnSubmit" onclick="addTask()">Add Task</button>
     </section>
 
     <p><a href="{{url_for('dashboard')}}">Back to Dashboard</a></p>
 
     <script>
-        function showAddForm(title, cat, due, remind){
-            document.querySelector("#taskAddSection").style.display = "block"
-            document.querySelector("#addTaskTitle").value = title
-            document.querySelector("#addTaskCategory").value = cat
-            document.querySelector("#addTaskDue").value = due
-            document.querySelector("#addTaskRemind").value = remind 
-        }
+        document.addEventListener('DOMContentLoaded', function() {
+            loadTasks();
+        });
     </script>
 {% endblock %}

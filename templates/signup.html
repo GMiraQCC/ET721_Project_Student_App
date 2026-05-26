@@ -3,19 +3,22 @@
 {% block sitetitle %}New User Sign-Up{% endblock %}
 
 {% block content %}
-    <head><style>main{ background-color: #ffb7cc; }</style></head>
+    <head><style>
+        main{ background-color: #ffb7cc; }
+        button{ font-size: 0.9rem; padding: 0.6rem;}    
+    </style></head>
     <h1>New User Sign-Up</h1>
-    <form method="post" class="signup_form" onsubmit="return validatePasswordLength()">
+    <form method="post" class="addForm" onsubmit="return validatePasswordLength()">
         <section>
-            <input type="text" name="username" placeholder="Type username..." required>
+            Username: <input type="text" name="username" placeholder="Type username..." required>
         </section>
         
         <section>
-            <input type="email" name="email" placeholder="Type email..." required>
+            Email: <input type="email" name="email" placeholder="Type email..." required>
         </section>
         
         <section>
-            <input type="password" name="password" placeholder="Type password..." required>
+            Password: <input type="password" name="password" placeholder="Type password..." required>
         </section>
 
         <button type="submit">Sign up</button>

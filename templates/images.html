@@ -2,5 +2,31 @@
 {% block content %}
     <head><style>main{ background-color: #fdfcaa; }</style></head>
     <h1>{{username}}'s Images (Notes)</h1>
+
+    <form id="imgUploadForm" class="addForm">
+        File: <input type="file" name="image" id="imgInput">
+        Subject (optional): <input type="text" name="subject" id="addImgSubject">
+        Topic (optional): <input type="text" name="topic" id="addImgTopic">
+        <button type="submit" class="btnSubmit">Upload</button>
+    </form>
+
+    <p id="message"></p>
+
+    <div id="gallery">
+        {% for image in images %}
+            <div class="card" id="image-{{image.id}}">
+                <img src="{{url_for('static', filename = 'uploads/'+image.filename)}}">
+                {% if image.subject or image.topic %}
+                    <div id="image-info">
+                    {% if image.subject %}<p><strong>Subject:</strong> {{image.subject}}</p>{% endif %}
+                    {% if image.topic %}<p><strong>Topic:</strong> {{image.topic}}</p>{% endif %}
+                    </div>
+                {% endif %}
+                <a href="{{url_for('download_image', image_id=image.id)}}" class="btnDownload">Download</a>
+                <button onclick="deleteImage({{image.id}})" class="btndelete">Delete</button>
+            </div>
+        {% endfor %}
+    </div>
+
     <p><a href="{{url_for('dashboard')}}">Back to Dashboard</a></p>
 {% endblock %}
